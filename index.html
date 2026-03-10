@@ -640,10 +640,10 @@
         }
 
         // Initialize theme based on user's preference or system settings
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            setTheme('dark');
-        } else {
+        if (localStorage.getItem('color-theme') === 'light') {
             setTheme('light');
+        } else {
+            setTheme('dark');
         }
 
         // Add event listener to theme toggle button
