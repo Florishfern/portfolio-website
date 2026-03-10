@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fern | Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <script>
+        // Configure Tailwind to support dark mode with 'class' method
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        :root { scroll-behavior: smooth; }
+        
+        /* Modal Transitions */
+        .modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-content { transition: transform 0.3s ease; transform: scale(0.95); }
+        .modal.active .modal-content { transform: scale(1); }
+        body.modal-open { overflow: hidden; }
+
+        /* Custom Hover Colors for Socials */
+        .social-btn { transition: all 0.3s ease; }
+        .social-btn.github:hover { color: #ffffff; filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); transform: translateY(-3px); }
+        .social-btn.linkedin:hover { color: #0a66c2; filter: drop-shadow(0 0 8px rgba(10,102,194,0.4)); transform: translateY(-3px); }
+        .social-btn.leetcode:hover { color: #ffa116; filter: drop-shadow(0 0 8px rgba(255,161,22,0.4)); transform: translateY(-3px); }
+
+        /* Grayscale to Color Tech Icons */
+        .tech-icon { filter: grayscale(100%) opacity(70%); transition: all 0.3s ease; }
+        .tech-icon:hover { filter: grayscale(0%) opacity(100%); transform: scale(1.1); }
+    </style>
+</head>
+<body class="antialiased selection:bg-purple-500 selection:text-white dark:bg-[#111111] dark:text-[#e5e5e5] bg-white text-gray-900 transition-colors duration-300">
+
+    <nav class="fixed w-full z-40 dark:bg-[#111111]/80 bg-white/80 backdrop-blur-md border-b dark:border-white/5 border-gray-100">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-black text-xl tracking-tighter dark:text-white text-gray-950">Florishfern<span class="text-purple-500">.Portfoliio</span></a>
+            <div class="flex items-center gap-6">
+                <div class="space-x-8 text-sm font-semibold dark:text-gray-400 text-gray-600 hidden md:block">
+                    <a href="#about" class="dark:hover:text-white hover:text-gray-950 transition">Home</a>
+                    <a href="#projects" class="dark:hover:text-white hover:text-gray-950 transition">Projects</a>
+                    <a href="#experience" class="dark:hover:text-white hover:text-gray-950 transition">Experience</a>
+                    <a href="#certificates" class="dark:hover:text-white hover:text-gray-950 transition">Certificates</a>
+                </div>
+                <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-full dark:bg-white/5 bg-gray-100 border dark:border-white/10 border-gray-200 transition">
+                    <i id="theme-toggle-light-icon" class="fas fa-sun text-yellow-500 text-xl hidden"></i>
+                    <i id="theme-toggle-dark-icon" class="fas fa-moon text-purple-500 text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="about" class="pt-32 pb-20 px-6 flex flex-col items-center text-center">
+        <div class="w-32 h-32 md:w-48 md:h-48 rounded-full p-1 bg-gradient-to-tr from-purple-500 to-orange-400 mb-8 shadow-2xl shadow-purple-500/20">
+            <img src="profile_img.jpg" alt="Profile" class="w-full h-full object-cover rounded-full border-4 dark:border-[#111111] border-white">
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight dark:text-white text-gray-950 leading-tight">
+            I adapt quickly and build <br class="hidden md:block">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400">with passion!</span>
+        </h1>
+
+        <p class="dark:text-gray-400 text-gray-700 max-w-2xl text-base md:text-lg mb-10 leading-relaxed">
+            Hello! I'm Fern, a Computer Science student with a strong academic foundation. I am a fast learner who embraces new challenges and highly adaptable to any situation and new technologies.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <a href="mailto:florishdevbkk@gmail.com" class="bg-purple-600 text-white font-bold py-3 px-8 rounded-full hover:bg-purple-700 transition transform hover:scale-105">Get In Touch</a>
+            <a href="https://drive.google.com/file/d/1tifFD740tjiCwCUGIzXt3C5qGpPm5aP1/view?usp=sharing" target="_blank" class="bg-transparent border dark:border-gray-600 border-gray-400 dark:text-white text-gray-900 font-bold py-3 px-8 rounded-full dark:hover:border-white hover:border-gray-950 transition transform hover:scale-105">Download Resume</a>
+        </div>
+
+        <div class="flex gap-8 text-3xl mb-16 dark:text-gray-500 text-gray-400 socials-bar">
+            <a href="https://github.com/Florishfern" class="social-btn github"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/natteraya-chanvorakijpaisal-730336368/" class="social-btn linkedin"><i class="fab fa-linkedin"></i></a>
+            <a href="https://leetcode.com/u/Florishfern/" class="social-btn leetcode"><i class="fas fa-code"></i></a>
+        </div>
+
+        <p class="text-xs font-bold dark:text-gray-500 text-gray-400 uppercase tracking-[0.2em] mb-6">Experience With</p>
+        <div class="flex flex-wrap justify-center gap-6 text-4xl dark:text-white text-gray-900 tech-bar">
+            <div class="flex flex-wrap justify-center gap-6 text-4xl dark:text-white text-gray-900 tech-bar max-w-3xl mx-auto">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-10 h-10 tech-icon object-contain" title="Java" alt="Java">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-10 h-10 tech-icon object-contain" title="Python" alt="Python">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-10 h-10 tech-icon object-contain" title="JavaScript" alt="JavaScript">
+            <div class="w-10 h-10 flex items-center justify-center tech-icon" title="SQL">
+                <i class="fas fa-database text-3xl" style="color: #4479a1;"></i>
+            </div>
+
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="w-10 h-10 tech-icon object-contain" title="Node.js" alt="Node.js">
+            <div class="w-10 h-10 tech-icon relative" title="Express.js">
+                <img src="https://cdn.simpleicons.org/express/000000" class="w-full h-full object-contain dark:hidden block" alt="Express">
+                <img src="https://cdn.simpleicons.org/express/ffffff" class="w-full h-full object-contain dark:block hidden" alt="Express">
+            </div>
+
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" class="w-10 h-10 tech-icon object-contain" title="Oracle" alt="Oracle">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-10 h-10 tech-icon object-contain" title="MySQL" alt="MySQL">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" class="w-10 h-10 tech-icon object-contain" title="Figma" alt="Figma">
+            <img src="https://cdn.simpleicons.org/postman/FF6C37" class="w-10 h-10 tech-icon object-contain" title="Postman" alt="Postman">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-10 h-10 tech-icon object-contain" title="Git" alt="Git">
+            
+            <div class="w-10 h-10 tech-icon relative" title="Vercel">
+                <img src="https://cdn.simpleicons.org/vercel/000000" class="w-full h-full object-contain dark:hidden block" alt="Vercel">
+                <img src="https://cdn.simpleicons.org/vercel/ffffff" class="w-full h-full object-contain dark:block hidden" alt="Vercel">
+            </div>
+            
+            <div class="w-10 h-10 tech-icon relative" title="Render">
+                <img src="https://cdn.simpleicons.org/render/000000" class="w-full h-full object-contain dark:hidden block" alt="Render">
+                <img src="https://cdn.simpleicons.org/render/ffffff" class="w-full h-full object-contain dark:block hidden" alt="Render">
+            </div>
+            
+            <img src="https://cdn.simpleicons.org/tidb/FF0000" class="w-10 h-10 tech-icon object-contain" title="TiDB Cloud" alt="TiDB">
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 px-6 max-w-5xl mx-auto">
+        <h2 class="text-2xl font-black text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500 uppercase tracking-widest">Projects</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="dark:bg-[#1a1a1a] bg-gray-50 rounded-2xl overflow-hidden border dark:border-white/5 border-gray-100 hover:border-gray-200 dark:hover:border-white/20 hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openModal('modal-proj-1')">
+                <div class="relative h-56 overflow-hidden bg-black">
+                    <img src="dinofocus_img.png" alt="Project 1" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t dark:from-[#1a1a1a] from-gray-50 to-transparent"></div>
+                </div>
+                <div class="p-6 relative">
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-xs font-bold dark:text-gray-400 text-gray-600 mb-1 uppercase tracking-wider">Web Application</p>
+                            <h3 class="text-xl font-bold dark:text-white text-gray-950 group-hover:text-orange-400 transition">Dinofocus</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full dark:bg-white/5 bg-gray-100 border dark:border-white/10 border-gray-200 flex items-center justify-center dark:text-gray-400 text-gray-600 group-hover:bg-purple-600 group-hover:text-white group-hover:border-purple-600 transition">
+                            <i class="fas fa-arrow-right -rotate-45"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dark:bg-[#1a1a1a] bg-gray-50 rounded-2xl overflow-hidden border dark:border-white/5 border-gray-100 hover:border-gray-200 dark:hover:border-white/20 hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openModal('modal-proj-2')">
+                <div class="relative h-56 overflow-hidden bg-black">
+                    <img src="gold_mine_map.png" alt="Project 2" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t dark:from-[#1a1a1a] from-gray-50 to-transparent"></div>
+                </div>
+                <div class="p-6 relative">
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-xs font-bold dark:text-gray-400 text-gray-600 mb-1 uppercase tracking-wider">Machine Learning Model</p>
+                            <h3 class="text-xl font-bold dark:text-white text-gray-950 group-hover:text-purple-400 transition">New York House Prediction</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full dark:bg-white/5 bg-gray-100 border dark:border-white/10 border-gray-200 flex items-center justify-center dark:text-gray-400 text-gray-600 group-hover:bg-purple-600 group-hover:text-white group-hover:border-purple-600 transition">
+                            <i class="fas fa-arrow-right -rotate-45"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dark:bg-[#1a1a1a] bg-gray-50 rounded-2xl overflow-hidden border dark:border-white/5 border-gray-100 hover:border-gray-200 dark:hover:border-white/20 hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openModal('modal-proj-3')">
+                <div class="relative h-56 overflow-hidden bg-black">
+                    <img src="runrexrun1.png" alt="Project 2" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t dark:from-[#1a1a1a] from-gray-50 to-transparent"></div>
+                </div>
+                <div class="p-6 relative">
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-xs font-bold dark:text-gray-400 text-gray-600 mb-1 uppercase tracking-wider">Java OOP Game</p>
+                            <h3 class="text-xl font-bold dark:text-white text-gray-950 group-hover:text-purple-400 transition">RUN REX RUN</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full dark:bg-white/5 bg-gray-100 border dark:border-white/10 border-gray-200 flex items-center justify-center dark:text-gray-400 text-gray-600 group-hover:bg-purple-600 group-hover:text-white group-hover:border-purple-600 transition">
+                            <i class="fas fa-arrow-right -rotate-45"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dark:bg-[#1a1a1a] bg-gray-50 rounded-2xl overflow-hidden border dark:border-white/5 border-gray-100 hover:border-gray-200 dark:hover:border-white/20 hover:-translate-y-2 transition-all duration-300 cursor-pointer group" onclick="openModal('modal-proj-4')">
+                <div class="relative h-56 overflow-hidden bg-black">
+                    <img src="usecase.png" alt="Project 2" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t dark:from-[#1a1a1a] from-gray-50 to-transparent"></div>
+                </div>
+                <div class="p-6 relative">
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-xs font-bold dark:text-gray-400 text-gray-600 mb-1 uppercase tracking-wider">System Analysis</p>
+                            <h3 class="text-xl font-bold dark:text-white text-gray-950 group-hover:text-purple-400 transition">TutorMatch</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-full dark:bg-white/5 bg-gray-100 border dark:border-white/10 border-gray-200 flex items-center justify-center dark:text-gray-400 text-gray-600 group-hover:bg-purple-600 group-hover:text-white group-hover:border-purple-600 transition">
+                            <i class="fas fa-arrow-right -rotate-45"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 px-6 max-w-3xl mx-auto">
+        <h2 class="text-2xl font-black text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 uppercase tracking-widest">Experience & Activities</h2>
+        
+        <div class="space-y-12">
+            <div class="flex flex-col md:flex-row gap-4 md:gap-8 group">
+                
+                <div class="md:w-1/4 pt-1 flex flex-col gap-6 items-start flex-shrink-0">
+                    <p class="text-sm font-bold dark:text-gray-500 text-gray-600">2025 - Present</p>
+                    
+                    <div class="w-24 h-24 transition duration-300 flex-shrink-0 group-hover:scale-110">
+                        <img src="cscamp_logo.png" alt="CS Camp Logo" class="w-full h-full object-contain">
+                    </div>
+                </div>
+
+                <div class="md:w-3/4">
+                    <h3 class="text-xl font-bold dark:text-white text-gray-950 mb-1 group-hover:text-purple-400 transition">Head Sponsor 18th Computer Science Camp</h3>
+                    <p class="text-sm text-purple-400 font-semibold mb-3">@สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+                    <p class="dark:text-gray-400 text-gray-700 text-sm leading-relaxed mb-4">
+                        นำทีมงานฝ่ายสปอนเซอร์จำนวน 5 คน วางแผนกลยุทธ์ติดต่อและนำเสนอโครงการกับบริษัทเทคโนโลยีและองค์กรต่างๆกว่า 150 แห่ง ประสบความสำเร็จในการจัดหาเงินทุนและสิ่งของสนับสนุนมูลค่ารวมกว่า 30,000 บาท พร้อมประสานงานดูแลสิทธิประโยชน์ของสปอนเซอร์ให้ครบถ้วนตลอดการจัดค่าย
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 dark:bg-white/5 bg-gray-100 border dark:border-white/10 border-gray-200 rounded-full text-xs dark:text-gray-300 text-gray-700">Leadership</span>
+                        <span class="px-3 py-1 dark:bg-white/5 bg-gray-100 border dark:border-white/10 border-gray-200 rounded-full text-xs dark:text-gray-300 text-gray-700">Communication</span>
+                        <span class="px-3 py-1 dark:bg-white/5 bg-gray-100 border dark:border-white/10 border-gray-200 rounded-full text-xs dark:text-gray-300 text-gray-700">Team Management</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="py-20 px-6 max-w-4xl mx-auto border-t dark:border-white/5 border-gray-100">
+        <h2 class="text-2xl font-black text-center mb-12 dark:text-gray-200 text-gray-700 uppercase tracking-widest">Education & Certificates</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            
+            <div class="flex items-center gap-6 p-4 rounded-2xl dark:bg-[#1a1a1a] bg-gray-50 border dark:border-white/5 border-gray-100 hover:border-gray-200 dark:hover:bg-[#222] transition cursor-pointer group" onclick="openImageModal('unofficial_transcript.png', 'Academic Transcript')">
+                <div class="w-16 h-16 dark:bg-white bg-gray-100 border dark:border-white/10 border-gray-200 rounded-xl overflow-hidden flex-shrink-0 p-1 group-hover:scale-105 transition">
+                    <img src="unofficial_transcript.png" alt="Cert" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h4 class="font-bold dark:text-white text-gray-950 text-base leading-tight mb-1 group-hover:text-purple-500 transition">Academic Transcript</h4>
+                    <p class="text-xs dark:text-gray-400 text-gray-600">Computer Science • Current GPA: 3.37</p>
+                </div>
+            </div>          
+            <div class="flex items-center gap-6 p-4 rounded-2xl dark:bg-[#1a1a1a] bg-gray-50 border dark:border-white/5 border-gray-100 hover:border-gray-200 dark:hover:bg-[#222] transition cursor-pointer group" onclick="openImageModal('42_bangkok_cert.png', 'Discovery Piscine Program')">
+                <div class="w-16 h-16 dark:bg-white bg-gray-100 border dark:border-white/10 border-gray-200 rounded-xl overflow-hidden flex-shrink-0 p-1 group-hover:scale-105 transition">
+                    <img src="42_bangkok_cert.png" alt="Cert" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h4 class="font-bold dark:text-white text-gray-950 text-base leading-tight mb-1 group-hover:text-purple-500 transition">Discovery Piscine Program</h4>
+                    <p class="text-xs dark:text-gray-400 text-gray-600">42 Bangkok KMITL • 2025</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 p-4 rounded-2xl dark:bg-[#1a1a1a] bg-gray-50 border dark:border-white/5 border-gray-100 hover:border-gray-200 dark:hover:bg-[#222] transition cursor-pointer group" onclick="openImageModal('python_google_cert.png', 'Crash Course on Python')">
+                <div class="w-16 h-16 dark:bg-white bg-gray-100 border dark:border-white/10 border-gray-200 rounded-xl overflow-hidden flex-shrink-0 p-1 group-hover:scale-105 transition">
+                    <img src="python_google_cert.png" alt="Cert" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h4 class="font-bold dark:text-white text-gray-950 text-base leading-tight mb-1 group-hover:text-purple-500 transition">Crash Course on Python</h4>
+                    <p class="text-xs dark:text-gray-400 text-gray-600">Google • 2023</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 p-4 rounded-2xl dark:bg-[#1a1a1a] bg-gray-50 border dark:border-white/5 border-gray-100 hover:border-gray-200 dark:hover:bg-[#222] transition cursor-pointer group" onclick="openImageModal('ged_transcript_cert.png', 'Official GED Transcript')">
+                <div class="w-16 h-16 dark:bg-white bg-gray-100 border dark:border-white/10 border-gray-200 rounded-xl overflow-hidden flex-shrink-0 p-1 group-hover:scale-105 transition">
+                    <img src="ged_transcript_cert.png" alt="Cert" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h4 class="font-bold dark:text-white text-gray-950 text-base leading-tight mb-1 group-hover:text-purple-500 transition">Official GED Transcript</h4>
+                    <p class="text-xs dark:text-gray-400 text-gray-600">GED • 2022</p>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <footer class="py-10 text-center border-t dark:border-white/5 border-gray-100">
+        <p class="text-gray-600 text-xs font-bold tracking-widest uppercase">
+            © 2026 Fern. All rights reserved.
+        </p>
+    </footer>
+
+    <div id="modal-proj-1" class="modal invisible opacity-0 fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 dark:bg-black/80 bg-gray-950/80 backdrop-blur-sm" onclick="closeModal('modal-proj-1')"></div>
+        
+        <div class="modal-content relative dark:bg-[#151515] bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl border dark:border-white/10 border-gray-100 shadow-2xl overflow-y-auto flex flex-col transition-colors duration-300">
+            
+            <div class="sticky top-0 right-0 z-10 flex justify-end p-4 bg-gradient-to-b dark:from-[#151515] dark:to-transparent from-white to-transparent">
+                <button onclick="closeModal('modal-proj-1')" class="w-10 h-10 dark:bg-black/50 bg-gray-100 hover:bg-gray-200 dark:hover:bg-white dark:hover:text-black border dark:border-white/10 border-gray-200 rounded-full flex items-center justify-center dark:text-white text-gray-700 transition-all backdrop-blur-md">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="px-6 md:px-10 pb-10 -mt-6">
+                
+                <div class="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-8 border dark:border-white/5 border-gray-100 shadow-inner group bg-black">
+                    <div id="slider-proj-1" class="w-full h-full flex transition-transform duration-500 ease-in-out">
+                        <img src="dinofocus_img.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 1">
+                        <img src="dinofocus_img1.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 2">
+                        <img src="dinofocus_img2.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 3">
+                        <img src="dinofocus_img3.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 4">
+                        <img src="dinofocus_img4.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 5">
+                    </div>
+
+                    <button onclick="moveSlide(-1, 'slider-proj-1')" class="absolute top-1/2 left-4 transform -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button onclick="moveSlide(1, 'slider-proj-1')" class="absolute top-1/2 right-4 transform -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <div id="dots-proj-1" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                        </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-10">
+                    <div class="md:w-2/3">
+                        <h2 class="text-3xl font-black dark:text-white text-gray-950 mb-4">Dinofocus</h2>
+                        
+                        <div class="prose dark:prose-invert prose-slate max-w-none dark:text-gray-400 text-gray-700 text-sm leading-relaxed mb-8">
+                            <p class="mb-4">แอปพลิเคชัน Pomodoro Timer ธีมไดโนเสาร์ ที่สร้างขึ้นเพื่อช่วยเพิ่มประสิทธิภาพในการโฟกัสและจัดการเวลาทำงาน โดยผสมผสานระบบนาฬิกาจับเวลาเข้ากับระบบ To-do list พร้อมระบบสมาชิกเพื่อบันทึกและติดตามความคืบหน้าของผู้ใช้งาน</p>
+                            
+                            <h4 class="dark:text-white text-gray-950 font-bold text-base mt-6 mb-3">Key Features & My Role:</h4>
+                            <ul class="space-y-2">
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> ออกแบบหน้าตาเว็บและ User Flow ทั้งหมดด้วย Figma</li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> วางโครงสร้างและพัฒนาระบบหลังบ้านด้วย Node.js และ Express (Routes, Controllers, Services)</li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> ออกแบบฐานข้อมูล MySQL และพัฒนาระบบยืนยันตัวตนที่ปลอดภัยด้วย JWT และ Bcrypt</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/3 space-y-8">
+                        <div>
+                            <h4 class="text-xs font-bold dark:text-gray-500 text-gray-600 uppercase tracking-widest mb-3">Tools Used</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Node.js</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Express</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">MySQL</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Figma</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">React</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Framer Motion</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Render</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Vercel</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">TiDB Cloud</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-bold dark:text-gray-500 text-gray-600 uppercase tracking-widest mb-3">Links & Docs</h4>
+                            <div class="space-y-3 links-bar">
+                                <a href="https://dinofocus.vercel.app" target="dinofocus" class="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-700 dark:hover:text-blue-400 hover:text-blue-500 transition dark:bg-white/5 bg-gray-100 p-3 rounded-xl border dark:border-white/5 border-gray-200 hover:border-blue-300 dark:hover:border-blue-400/50">
+                                    <i class="fas fa-external-link-alt text-blue-400 text-lg"></i>
+                                    <span class="font-semibold">Live Demo</span>
+                                </a>
+                                <a href="https://github.com/Florishfern/dinoFocus" target="github" class="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-700 dark:hover:text-white hover:text-gray-950 transition dark:bg-white/5 bg-gray-100 p-3 rounded-xl border dark:border-white/5 border-gray-200 hover:border-gray-300 dark:hover:border-white/50">
+                                    <i class="fab fa-github text-lg"></i>
+                                    <span class="font-semibold">Source Code</span>
+                                </a>
+                                <a href="https://www.figma.com/design/L5Mr0LQlwBGT30cVMc1mla/Dinofocus?node-id=8-3&t=Vxv2E5jawHVwldvp-1" target="_blank" class="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-700 dark:hover:text-pink-400 hover:text-pink-500 transition dark:bg-white/5 bg-gray-100 p-3 rounded-xl border dark:border-white/5 border-gray-200 hover:border-pink-300 dark:hover:border-pink-400/50">
+                                    <i class="fab fa-figma text-pink-500 text-lg"></i>
+                                    <span class="font-semibold">Figma Design</span>
+                                </a>
+                                <a href="https://www.notion.so/Requirement-2f401da32b8381229b76dd9a87bea2f4?source=copy_link" target="_blank" class="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-700 dark:hover:text-white hover:text-black transition dark:bg-white/5 bg-gray-100 p-3 rounded-xl border dark:border-white/5 border-gray-200 hover:border-gray-400 dark:hover:border-white/50">
+                                    <img src="https://cdn.simpleicons.org/notion/000000" class="w-4 h-4 dark:hidden block opacity-80" alt="Notion">
+                                    <img src="https://cdn.simpleicons.org/notion/ffffff" class="w-4 h-4 dark:block hidden opacity-80" alt="Notion">
+                                    <span class="font-semibold">Requirements Docs</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-proj-2" class="modal invisible opacity-0 fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 dark:bg-black/80 bg-gray-950/80 backdrop-blur-sm" onclick="closeModal('modal-proj-2')"></div>
+        
+        <div class="modal-content relative dark:bg-[#151515] bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl border dark:border-white/10 border-gray-100 shadow-2xl overflow-y-auto flex flex-col transition-colors duration-300">
+            
+            <div class="sticky top-0 right-0 z-10 flex justify-end p-4 bg-gradient-to-b dark:from-[#151515] dark:to-transparent from-white to-transparent">
+                <button onclick="closeModal('modal-proj-2')" class="w-10 h-10 dark:bg-black/50 bg-gray-100 hover:bg-gray-200 dark:hover:bg-white dark:hover:text-black border dark:border-white/10 border-gray-200 rounded-full flex items-center justify-center dark:text-white text-gray-700 transition-all backdrop-blur-md">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="px-6 md:px-10 pb-10 -mt-6">
+                
+                <div class="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-8 border dark:border-white/5 border-gray-100 shadow-inner group bg-black">
+                    <div id="slider-proj-2" class="w-full h-full flex transition-transform duration-500 ease-in-out">
+                        <img src="gold_mine_map.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 1">
+                        <img src="matchmaker.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 2">
+                    </div>
+
+                    <button onclick="moveSlide(-1, 'slider-proj-2')" class="absolute top-1/2 left-4 transform -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button onclick="moveSlide(1, 'slider-proj-2')" class="absolute top-1/2 right-4 transform -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <div id="dots-proj-2" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-10">
+                    <div class="md:w-2/3">
+                        <h2 class="text-3xl font-black dark:text-white text-gray-950 mb-4">New York House Prediction</h2>
+                        
+                        <div class="prose dark:prose-invert prose-slate max-w-none dark:text-gray-400 text-gray-700 text-sm leading-relaxed mb-8">
+                            <p class="mb-4">โปรเจกต์วิเคราะห์และแนะนำอสังหาริมทรัพย์ด้วย Machine Learning โดยระบบสามารถประเมินราคาบ้านจากปัจจัยต่างๆ ที่ช่วยคำนวณและแนะนำบ้านที่ตรงกับความต้องการของผู้ใช้งานมากที่สุด</p>
+                            
+                            <h4 class="dark:text-white text-gray-950 font-bold text-base mt-6 mb-3">Key Features & My Role:</h4>
+                            <ul class="space-y-2">
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> ทำ Data Preprocessing โดยเน้นที่กระบวนการ Data Cleaning และ Feature Engineering ผ่านการใช้เทคนิคทางสถิติเพื่อจัดการค่า Outliers และปรับสเกลข้อมูล</li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> พัฒนาโมเดล Random Forest ทำนายราคาอสังหาริมทรัพย์และวิเคราะห์ปัจจัยหลักที่มีผลต่อราคา</li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> ใช้ K-Means Clustering และ GeoPandas วิเคราะห์และแบ่งกลุ่มทำเลทองจากดัชนีความคุ้มค่าเชิงพื้นที่</li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> สร้างระบบแนะนำทรัพย์สินแบบจับคู่ พร้อมแผนที่อินเทอร์แอกทีฟด้วย Folium และ Plotly</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/3 space-y-8">
+                        <div>
+                            <h4 class="text-xs font-bold dark:text-gray-500 text-gray-600 uppercase tracking-widest mb-3">Tools Used</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Python</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Scikit-learn</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Folium</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Plotly</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Pandas</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-bold dark:text-gray-500 text-gray-600 uppercase tracking-widest mb-3">Links & Docs</h4>
+                            <div class="space-y-3 links-bar">
+                                <a href="https://github.com/Florishfern/NYC-Real-Estate-AI" target="_blank" class="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-700 dark:hover:text-white hover:text-gray-950 transition dark:bg-white/5 bg-gray-100 p-3 rounded-xl border dark:border-white/5 border-gray-200 hover:border-gray-300 dark:hover:border-white/50">
+                                    <i class="fab fa-github text-lg"></i>
+                                    <span class="font-semibold">Source Code</span>
+                                </a>
+                                <a href="https://docs.google.com/document/d/1vQIzNDCdfcIL-VuPiSVxBdGIAXPEEFfPMKJHZwym8n4/edit?usp=sharing" target="_blank" class="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-700 dark:hover:text-orange-400 hover:text-blue-500 transition dark:bg-white/5 bg-gray-100 p-3 rounded-xl border dark:border-white/5 border-gray-200 hover:border-blue-300 dark:hover:border-blue-400/50">
+                                    <i class="fas fa-file-alt text-blue-400 text-lg"></i>
+                                    <span class="font-semibold">Project Docs</span>
+                                </a>
+                                <a href="https://www.kaggle.com/datasets/nelgiriyewithana/new-york-housing-market" target="_blank" class="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-700 dark:hover:text-yellow-400 hover:text-orange-500 transition dark:bg-white/5 bg-gray-100 p-3 rounded-xl border dark:border-white/5 border-gray-200 hover:border-yellow-300 dark:hover:border-yellow-400/50">
+                                    <i class="fas fa-database text-yellow-400 text-lg"></i>
+                                    <span class="font-semibold">Kaggle Dataset</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-proj-3" class="modal invisible opacity-0 fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 dark:bg-black/80 bg-gray-950/80 backdrop-blur-sm" onclick="closeModal('modal-proj-3')"></div>
+        
+        <div class="modal-content relative dark:bg-[#151515] bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl border dark:border-white/10 border-gray-100 shadow-2xl overflow-y-auto flex flex-col transition-colors duration-300">
+            
+            <div class="sticky top-0 right-0 z-10 flex justify-end p-4 bg-gradient-to-b dark:from-[#151515] dark:to-transparent from-white to-transparent">
+                <button onclick="closeModal('modal-proj-3')" class="w-10 h-10 dark:bg-black/50 bg-gray-100 hover:bg-gray-200 dark:hover:bg-white dark:hover:text-black border dark:border-white/10 border-gray-200 rounded-full flex items-center justify-center dark:text-white text-gray-700 transition-all backdrop-blur-md">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="px-6 md:px-10 pb-10 -mt-6">
+                
+                <div class="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-8 border dark:border-white/5 border-gray-100 shadow-inner group bg-black">
+                    <div id="slider-proj-3" class="w-full h-full flex transition-transform duration-500 ease-in-out">
+                        <img src="runrexrun1.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 1">
+                        <img src="runrexrun2.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 2">
+                    </div>
+
+                    <button onclick="moveSlide(-1, 'slider-proj-3')" class="absolute top-1/2 left-4 transform -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button onclick="moveSlide(1, 'slider-proj-3')" class="absolute top-1/2 right-4 transform -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <div id="dots-proj-3" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-10">
+                    <div class="md:w-2/3">
+                        <h2 class="text-3xl font-black dark:text-white text-gray-950 mb-4">RUN REX RUN</h2>
+                        
+                        <div class="prose dark:prose-invert prose-slate max-w-none dark:text-gray-400 text-gray-700 text-sm leading-relaxed mb-8">
+                            <p class="mb-4">เกม 2D แนว Arcade ตะลุยด่านที่พัฒนาด้วย Java Swing โดยผู้เล่นจะต้องควบคุมตัวละครเพื่อหลบหลีกต้นไม้และไดโนเสาร์ พร้อมเก็บไข่เพื่อทำคะแนน ตัวเกมมาพร้อมระบบจัดการด่าน ระบบเปลี่ยนตัวละคร และระบบเสียงประกอบในเกม</p>
+                            
+                            <h4 class="dark:text-white text-gray-950 font-bold text-base mt-6 mb-3">Key Features & My Role:</h4>
+                            <ul class="space-y-2">
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> พัฒนาระบบ Game Loop พื้นฐานและระบบฉากหลังแบบ Scrolling Background โดยใช้ JPanel ร่วมกับ Timer</li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> ประยุกต์ใช้หลักการเขียนโปรแกรมเชิงวัตถุ (OOP) ในการออกแบบโครงสร้างตัวละครและสิ่งกีดขวาง พร้อมใช้ ArrayList ในการจัดการกลุ่มวัตถุต่างๆภายในเกม</li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> ออกแบบตั้งแต่หน้าเมนูหลัก หน้าเลือกด่าน หน้าเลือกตัวละคร ไปจนถึงหน้าจบเกม</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/3 space-y-8">
+                        <div>
+                            <h4 class="text-xs font-bold dark:text-gray-500 text-gray-600 uppercase tracking-widest mb-3">Tools Used</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Java</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">Swing</span>
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">AWT</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-bold dark:text-gray-500 text-gray-600 uppercase tracking-widest mb-3">Links & Docs</h4>
+                            <div class="space-y-3 links-bar">
+                                <a href="https://github.com/Florishfern/Java-Game-Project" target="_blank" class="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-700 dark:hover:text-white hover:text-gray-950 transition dark:bg-white/5 bg-gray-100 p-3 rounded-xl border dark:border-white/5 border-gray-200 hover:border-gray-300 dark:hover:border-white/50">
+                                    <i class="fab fa-github text-lg"></i>
+                                    <span class="font-semibold">Source Code</span>
+                                </a>
+                                <a href="https://www.figma.com/design/miMAHen64cigDUeSkYCdcU/Jurassic-Road?node-id=55-16&t=3Nsp1IKwxpEEk1XI-1" target="_blank" class="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-700 dark:hover:text-pink-400 hover:text-pink-500 transition dark:bg-white/5 bg-gray-100 p-3 rounded-xl border dark:border-white/5 border-gray-200 hover:border-pink-300 dark:hover:border-pink-400/50">
+                                    <i class="fab fa-figma text-pink-500 text-lg"></i>
+                                    <span class="font-semibold">Figma Design</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-proj-4" class="modal invisible opacity-0 fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 dark:bg-black/80 bg-gray-950/80 backdrop-blur-sm" onclick="closeModal('modal-proj-4')"></div>
+        
+        <div class="modal-content relative dark:bg-[#151515] bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl border dark:border-white/10 border-gray-100 shadow-2xl overflow-y-auto flex flex-col transition-colors duration-300">
+            
+            <div class="sticky top-0 right-0 z-10 flex justify-end p-4 bg-gradient-to-b dark:from-[#151515] dark:to-transparent from-white to-transparent">
+                <button onclick="closeModal('modal-proj-4')" class="w-10 h-10 dark:bg-black/50 bg-gray-100 hover:bg-gray-200 dark:hover:bg-white dark:hover:text-black border dark:border-white/10 border-gray-200 rounded-full flex items-center justify-center dark:text-white text-gray-700 transition-all backdrop-blur-md">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="px-6 md:px-10 pb-10 -mt-6">
+                
+                <div class="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-8 border dark:border-white/5 border-gray-100 shadow-inner group bg-black">
+                    <div id="slider-proj-4" class="w-full h-full flex transition-transform duration-500 ease-in-out">
+                        <img src="usecase.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 1">
+                        <img src="class_diagram.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 2">
+                        <img src="sequence_diagram.png" class="w-full h-full object-cover flex-shrink-0" alt="Slide 3">
+                    </div>
+
+                    <button onclick="moveSlide(-1, 'slider-proj-4')" class="absolute top-1/2 left-4 transform -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button onclick="moveSlide(1, 'slider-proj-4')" class="absolute top-1/2 right-4 transform -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <div id="dots-proj-3" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-10">
+                    <div class="md:w-2/3">
+                        <h2 class="text-3xl font-black dark:text-white text-gray-950 mb-4">TutorMatch</h2>
+                        
+                        <div class="prose dark:prose-invert prose-slate max-w-none dark:text-gray-400 text-gray-700 text-sm leading-relaxed mb-8">
+                            <p class="mb-4">ระบบเว็บแอปพลิเคชันศูนย์กลางค้นหาและจับคู่ติวเตอร์อิสระ ออกแบบสถาปัตยกรรมระบบเพื่อรองรับการจองเวลาเรียนอัจฉริยะ การชำระเงินที่ปลอดภัย และระบบรีวิว</p>
+                            
+                            <h4 class="dark:text-white text-gray-950 font-bold text-base mt-6 mb-3">Key Features & My Role:</h4>
+                            <ul class="space-y-2">
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> วิเคราะห์ความต้องการและออกแบบสถาปัตยกรรมระบบแบบ End-to-End ผ่าน UML Diagrams</li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> Use Case</li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> Class Diagram</li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i> Sequence Diagram</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/3 space-y-8">
+                        <div>
+                            <h4 class="text-xs font-bold dark:text-gray-500 text-gray-600 uppercase tracking-widest mb-3">Tools Used</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="dark:bg-[#222] bg-gray-100 dark:text-gray-300 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium border dark:border-white/5 border-gray-200">draw.io</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-bold dark:text-gray-500 text-gray-600 uppercase tracking-widest mb-3">Links & Docs</h4>
+                            <div class="space-y-3 links-bar">
+                                <a href="https://drive.google.com/file/d/1FsWl6AO25bAu7z_zsB_-AWSOFUp4HXNe/view?usp=sharing" target="_blank" class="flex items-center gap-3 text-sm dark:text-gray-300 text-gray-700 dark:hover:text-blue-400 hover:text-orange-500 transition dark:bg-white/5 bg-gray-100 p-3 rounded-xl border dark:border-white/5 border-gray-200 hover:border-blue-300 dark:hover:border-blue-400/50">
+                                    <i class="fas fa-file-alt text-blue-400 text-lg"></i>
+                                    <span class="font-semibold">Project Docs</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-cert-image" class="modal invisible opacity-0 fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 dark:bg-black/90 bg-gray-950/90 backdrop-blur-sm" onclick="closeModal('modal-cert-image')"></div>
+        
+        <div class="relative z-10 w-full max-w-3xl flex flex-col items-center">
+            <button onclick="closeModal('modal-cert-image')" class="absolute -top-12 right-0 w-10 h-10 bg-white/10 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all backdrop-blur-md">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <img id="cert-modal-img" src="" alt="Certificate Full" class="w-full max-h-[80vh] object-contain rounded-lg shadow-2xl">
+            <p id="cert-modal-title" class="text-white mt-4 font-bold tracking-wide text-lg text-center"></p>
+        </div>
+    </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const socialsBar = document.querySelector('.socials-bar');
+        const techBar = document.querySelector('.tech-bar');
+        const linksBar = document.querySelector('.links-bar');
+
+        // Function to set theme and update icons/social bar color
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                themeToggleLightIcon.classList.remove('hidden');
+                themeToggleDarkIcon.classList.add('hidden');
+                socialsBar.classList.remove('text-gray-400');
+                socialsBar.classList.add('dark:text-gray-500');
+                techBar.classList.remove('text-gray-900');
+                techBar.classList.add('dark:text-white');
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggleLightIcon.classList.add('hidden');
+                themeToggleDarkIcon.classList.remove('hidden');
+                socialsBar.classList.add('text-gray-400');
+                socialsBar.classList.remove('dark:text-gray-500');
+                techBar.classList.add('text-gray-900');
+                techBar.classList.remove('dark:text-white');
+                localStorage.setItem('color-theme', 'light');
+            }
+        }
+
+        // Initialize theme based on user's preference or system settings
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+
+        // Add event listener to theme toggle button
+        themeToggleBtn.addEventListener('click', function() {
+            // If theme is currently dark, switch to light
+            if (document.documentElement.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+        // ==========================================
+        // Modal & Image Slider Functions
+        // ==========================================
+        const sliders = {}; // Object to track current slide index for multiple sliders
+
+        function openModal(modalID) {
+            const modal = document.getElementById(modalID);
+            modal.classList.remove('invisible', 'opacity-0');
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+
+            // Initialize slider when modal opens
+            const sliderId = modalID.replace('modal-', 'slider-');
+            if (document.getElementById(sliderId)) {
+                initSlider(sliderId);
+            }
+        }
+
+        function closeModal(modalID) {
+            const modal = document.getElementById(modalID);
+            modal.classList.remove('active');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('invisible');
+                document.body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        // Setup slider position and dots
+        function initSlider(sliderId) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return;
+            sliders[sliderId] = 0; 
+            slider.style.transform = `translateX(0%)`; 
+            updateDots(sliderId);
+        }
+
+        // Move slide left or right
+        function moveSlide(direction, sliderId) {
+            const slider = document.getElementById(sliderId);
+            const totalSlides = slider.children.length;
+            
+            if (sliders[sliderId] === undefined) sliders[sliderId] = 0;
+            sliders[sliderId] += direction;
+
+            // Loop around if out of bounds
+            if (sliders[sliderId] >= totalSlides) {
+                sliders[sliderId] = 0;
+            } else if (sliders[sliderId] < 0) {
+                sliders[sliderId] = totalSlides - 1;
+            }
+
+            slider.style.transform = `translateX(-${sliders[sliderId] * 100}%)`;
+            updateDots(sliderId);
+        }
+
+        // Update dot indicators
+        function updateDots(sliderId) {
+            const slider = document.getElementById(sliderId);
+            const totalSlides = slider.children.length;
+            const dotsContainerId = sliderId.replace('slider-', 'dots-');
+            const dotsContainer = document.getElementById(dotsContainerId);
+            
+            if (!dotsContainer) return;
+            
+            let dotsHtml = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const isActive = i === sliders[sliderId] ? 'bg-white w-6' : 'bg-white/50 w-2 hover:bg-white/80 cursor-pointer';
+                dotsHtml += `<div onclick="goToSlide(${i}, '${sliderId}')" class="h-2 rounded-full transition-all duration-300 shadow-md ${isActive}"></div>`;
+            }
+            dotsContainer.innerHTML = dotsHtml;
+        }
+
+        // Jump to specific slide
+        function goToSlide(index, sliderId) {
+            sliders[sliderId] = index;
+            const slider = document.getElementById(sliderId);
+            slider.style.transform = `translateX(-${sliders[sliderId] * 100}%)`;
+            updateDots(sliderId);
+        }
+
+        // ==========================================
+        // Modal ดูรูป Certificate
+        // ==========================================
+        function openImageModal(imageSrc, titleText) {
+            const modal = document.getElementById('modal-cert-image');
+            const imgElement = document.getElementById('cert-modal-img');
+            const titleElement = document.getElementById('cert-modal-title');
+            
+            imgElement.src = imageSrc;
+            titleElement.innerText = titleText;
+            
+            modal.classList.remove('invisible', 'opacity-0');
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+        }
+    </script>
+</body>
+</html>
